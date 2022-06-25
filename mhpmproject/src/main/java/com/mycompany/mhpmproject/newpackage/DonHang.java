@@ -233,11 +233,11 @@ int Uprice;
     private void ProductTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductTableMouseClicked
         DefaultTableModel model = (DefaultTableModel)ProductTable.getModel();
         int Myindex = ProductTable.getSelectedRow();
-        //ProId.setText(model.getValueAt(MyIndex, 0).toString());
-        Uprice = Integer.valueOf(model.getValueAt(MyIndex, 3).toString());
-        ProdName.setText(model.getValueAt(MyIndex, 1).toString());
-       // ProdQty.setText(model.getValueAt(MyIndex, 2).toString());
-       // ProdPrice.setText(model.getValueAt(MyIndex, 3).toString());
+        //ProId.setText(model.getValueAt(Myindex, 0).toString());
+        Uprice = Integer.valueOf(model.getValueAt(Myindex, 3).toString());
+        ProdName.setText(model.getValueAt(Myindex, 1).toString());
+       // ProdQty.setText(model.getValueAt(Myindex, 2).toString());
+       // ProdPrice.setText(model.getValueAt(Myindex, 3).toString());
     }//GEN-LAST:event_ProductTableMouseClicked
 
     /**

@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package githubpizzastore;
+package statistics;
 
 /**
  *
  * @author Hung Nguyen
  */
-public class GitHubPizzaStore {
+public class Statistics {
 
     /**
      * @param args the command line arguments

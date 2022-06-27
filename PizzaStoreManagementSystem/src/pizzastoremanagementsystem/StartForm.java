@@ -111,8 +111,8 @@ public class StartForm extends javax.swing.JFrame {
         {
             
         }
-        //new Login().setVisible(true);
-        Mystartform.dispose();
+        //new Login().setVisible(true);//Start display LoginForm
+        Mystartform.dispose();//End display StartForm
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

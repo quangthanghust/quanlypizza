@@ -473,7 +473,7 @@ else{
     }//GEN-LAST:event_CatcbMouseClicked
 
     private void DeletebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeletebtnMouseClicked
-        // TODO add your handling code here:
+        
         SelectSeller();
     }//GEN-LAST:event_DeletebtnMouseClicked
 

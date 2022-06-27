@@ -49,7 +49,6 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setSize(new java.awt.Dimension(900, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));

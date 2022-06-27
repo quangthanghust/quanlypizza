@@ -103,9 +103,10 @@ public class StartForm extends javax.swing.JFrame {
         Mystartform.setVisible(true);
         try{
             for(int i = 0; i <= 100; i++){
+                //Set the percentage from 0 to 100
                 Thread.sleep(40);
                 Mystartform.Myprogress.setValue(i);
-                Mystartform.Percentage.setText(Integer.toString(i) + "%");
+                Mystartform.Percentage.setText(Integer.toString(i) + "%");//Display the percentage on the progressbar
             }
         }catch(Exception e)
         {

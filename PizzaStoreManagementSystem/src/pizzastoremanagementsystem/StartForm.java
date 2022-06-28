@@ -113,7 +113,7 @@ public class StartForm extends javax.swing.JFrame {
         {
             
         }
-        //new Login().setVisible(true);//Start display LoginForm
+        //new LoginForm().setVisible(true);//Start display LoginForm
         Mystartform.dispose();//End display StartForm
     }
 

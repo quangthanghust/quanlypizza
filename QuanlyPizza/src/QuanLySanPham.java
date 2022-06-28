@@ -25,17 +25,17 @@ public class QuanLySanPham extends javax.swing.JFrame {
      */
     public QuanLySanPham() {
         initComponents();
-        SelectSeller();
+        SelectProduct();
     }
 Connection Con= null;
 Statement St = null;
 ResultSet Rs = null;
-public void SelectSeller()
+public void SelectProduct()
 {
     try{
        Con = DriverManager.getConnection("ProductDb on MySQL","productdb","");
         St = Con.createStatement();
-        Rs = St.executeQuery("Select * from productdb.SELLERBL");
+        Rs = St.executeQuery("Select * from productdb.product");
         producttable.setModel(DbUtils.resultSetToTableModel(Rs));
     }catch(Exception e) {
         e.printStackTrace();
@@ -371,7 +371,7 @@ public void SelectSeller()
         else{
         try{
             Con = DriverManager.getConnection("ProductDb on MySQL","productdb","");
-            PreparedStatement add = Con.prepareStatement("insert into PRODUCTBL values(?, ?, ?, ?)");
+            PreparedStatement add = Con.prepareStatement("insert into product values(?, ?, ?, ?)");
             add.setInt(1, Integer.valueOf(ProdId.getText()));
             add.setString(2, ProdName.getText());
             add.setInt(3, Integer.valueOf(ProdPrice.getText()));
@@ -379,7 +379,7 @@ public void SelectSeller()
             int row = add.executeUpdate();
             JOptionPane.showMessageDialog(this, "Product Added Successfully");
             Con.close();
-            SelectSeller();
+            SelectProduct();
                                         }  catch (Exception e){  
                                             e.printStackTrace();
                                         }   

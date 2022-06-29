@@ -5,6 +5,7 @@
 package pizzastoremanagementsystem;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 /**
  *
@@ -118,6 +119,11 @@ public class AccountManagementForm extends javax.swing.JFrame {
         ClearAccount.setText("CLEAR");
         ClearAccount.setBorder(null);
         ClearAccount.setBorderPainted(false);
+        ClearAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ClearAccountMouseClicked(evt);
+            }
+        });
 
         DeleteAccount.setBackground(new java.awt.Color(255, 102, 0));
         DeleteAccount.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -125,6 +131,11 @@ public class AccountManagementForm extends javax.swing.JFrame {
         DeleteAccount.setText("DELETE");
         DeleteAccount.setBorder(null);
         DeleteAccount.setBorderPainted(false);
+        DeleteAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DeleteAccountMouseClicked(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 102, 0));
@@ -151,6 +162,11 @@ public class AccountManagementForm extends javax.swing.JFrame {
         AccountTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
         AccountTable.setRowHeight(25);
         AccountTable.setSelectionBackground(new java.awt.Color(255, 102, 0));
+        AccountTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AccountTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(AccountTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -233,7 +249,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -270,7 +286,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -278,7 +294,6 @@ public class AccountManagementForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddAccountMouseClicked
-        // TODO add your handling code here:
         if(AccountId.getText().isEmpty() || AccountName.getText().isEmpty() || AccountPassword.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Missing Information!");
         }
@@ -300,6 +315,40 @@ public class AccountManagementForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_AddAccountMouseClicked
+
+    private void AccountTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel)AccountTable.getModel();
+        int Myindex = AccountTable.getSelectedRow();
+        AccountId.setText(model.getValueAt(Myindex, 0).toString());
+        AccountName.setText(model.getValueAt(Myindex, 1).toString());
+        AccountPassword.setText(model.getValueAt(Myindex, 2).toString());
+        Gender.setSelectedItem(model.getValueAt(Myindex, 3).toString());
+    }//GEN-LAST:event_AccountTableMouseClicked
+
+    private void ClearAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearAccountMouseClicked
+        AccountId.setText("");
+        AccountName.setText("");
+        AccountPassword.setText("");
+    }//GEN-LAST:event_ClearAccountMouseClicked
+
+    private void DeleteAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteAccountMouseClicked
+        if(AccountId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Choose a index before deleting account!");
+        }
+        else{
+            try{
+        Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
+        String AId = AccountId.getText();
+        String Query = "Delete from accounttable where ACCID=" + AId;
+        Statement Add = Con.createStatement();
+        Add.executeUpdate(Query);
+        SelectAccount();
+        JOptionPane.showMessageDialog(this, "Delete account success fully!");
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_DeleteAccountMouseClicked
     
     public void SelectAccount(){
         try{

@@ -44,9 +44,9 @@ public class Statistic extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         Xbutton = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        productsLabel = new javax.swing.JLabel();
+        accountsLabel = new javax.swing.JLabel();
+        logoutLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -176,17 +176,17 @@ public class Statistic extends javax.swing.JFrame {
         Xbutton.setForeground(new java.awt.Color(255, 255, 255));
         Xbutton.setText("X");
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Products");
+        productsLabel.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
+        productsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        productsLabel.setText("Products");
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Accounts");
+        accountsLabel.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
+        accountsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        accountsLabel.setText("Accounts");
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 2, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Log out");
+        logoutLabel.setFont(new java.awt.Font("Century Gothic", 2, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Log out");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,9 +197,9 @@ public class Statistic extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(productsLabel)
+                            .addComponent(accountsLabel)
+                            .addComponent(logoutLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(25, 25, 25)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -217,11 +217,11 @@ public class Statistic extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jLabel3)
+                        .addComponent(productsLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
+                        .addComponent(accountsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)))
+                        .addComponent(logoutLabel)))
                 .addContainerGap())
         );
 
@@ -281,19 +281,19 @@ public class Statistic extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Xbutton;
+    private javax.swing.JLabel accountsLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel logoutLabel;
+    private javax.swing.JLabel productsLabel;
     private javax.swing.JLabel statistics;
     private javax.swing.JLabel tableName;
     // End of variables declaration//GEN-END:variables

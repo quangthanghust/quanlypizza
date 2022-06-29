@@ -112,6 +112,11 @@ public class AccountManagementForm extends javax.swing.JFrame {
         EditAccount.setText("EDIT");
         EditAccount.setBorder(null);
         EditAccount.setBorderPainted(false);
+        EditAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EditAccountMouseClicked(evt);
+            }
+        });
 
         ClearAccount.setBackground(new java.awt.Color(255, 102, 0));
         ClearAccount.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -338,8 +343,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         else{
             try{
         Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
-        String AId = AccountId.getText();
-        String Query = "Delete from accounttable where ACCID=" + AId;
+        String Query = "Delete from accounttable where ACCID=" + AccountId.getText();
         Statement Add = Con.createStatement();
         Add.executeUpdate(Query);
         SelectAccount();
@@ -349,6 +353,24 @@ public class AccountManagementForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_DeleteAccountMouseClicked
+
+    private void EditAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditAccountMouseClicked
+        if(AccountId.getText().isEmpty()|| AccountName.getText().isEmpty()|| AccountPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Missing Information!");
+        }
+        else{
+            try{
+        Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
+        String Query = "Update accounttable set NAME ='"+ AccountName.getText()+"',"+ "PASSWORD ='"+ AccountPassword.getText()+"',"+ "Gender='"+ Gender.getSelectedItem().toString()+"'"+ "Where ACCID=" +AccountId.getText();
+        Statement Add = Con.createStatement();
+        Add.executeUpdate(Query);
+        SelectAccount();
+        JOptionPane.showMessageDialog(this, "Edit account success fully!");
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_EditAccountMouseClicked
     
     public void SelectAccount(){
         try{

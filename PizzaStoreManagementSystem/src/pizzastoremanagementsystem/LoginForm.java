@@ -145,6 +145,11 @@ public class LoginForm extends javax.swing.JFrame {
         ExitButton.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         ExitButton.setForeground(new java.awt.Color(255, 102, 0));
         ExitButton.setText("X");
+        ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ExitButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -236,6 +241,10 @@ public class LoginForm extends javax.swing.JFrame {
     private void RoleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RoleBoxActionPerformed
+
+    private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_ExitButtonMouseClicked
 
     /**
      * @param args the command line arguments

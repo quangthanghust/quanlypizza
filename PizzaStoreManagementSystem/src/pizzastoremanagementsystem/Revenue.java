@@ -270,6 +270,7 @@ public class Revenue extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_ExitButtonMouseClicked
 
+    //Show sold products on table
        private void showSoldProducts() {
         try{
             Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
@@ -282,6 +283,7 @@ public class Revenue extends javax.swing.JFrame {
         }
     }
        
+    //Log out event
     private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
         new LoginForm().setVisible(true);//Start display LoginForm
         this.dispose();

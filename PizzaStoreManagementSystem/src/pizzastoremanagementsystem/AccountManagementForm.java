@@ -8,6 +8,7 @@ package pizzastoremanagementsystem;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 /**
  *
@@ -430,7 +431,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         else{
             try{
         Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
-        String Query = "Update accounttable set NAME ='"+ AccountName.getText()+"',"+ "PASSWORD ='"+ AccountPassword.getText()+"',"+ "Gender='"+ Role.getSelectedItem().toString()+"'"+ "Where ACCID=" +AccountId.getText();
+        String Query = "Update accounttable set NAME ='"+ AccountName.getText()+"',"+ "PASSWORD ='"+ AccountPassword.getText()+"',"+ "ROLE='"+ Role.getSelectedItem().toString()+"'"+ "Where ACCID=" +AccountId.getText();
         Statement Add = Con.createStatement();
         Add.executeUpdate(Query);
         SelectAccount();
@@ -472,6 +473,13 @@ public class AccountManagementForm extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    /*public void Search(String str){
+        DefaultTableModel model = (DefaultTableModel)AccountTable.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        AccountTable.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(str));
+    }*/
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -1,11 +1,19 @@
 package pizzastoremanagementsystem;
 
+import java.sql.*;
+import net.proteanit.sql.DbUtils;
+
 public class Revenue extends javax.swing.JFrame {
 
     public Revenue() {
         initComponents();
+        showSoldProducts();
     }
 
+    Connection Con = null;
+    Statement St = null;
+    ResultSet Rs = null;
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -14,7 +22,7 @@ public class Revenue extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        soldProductTable = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -40,8 +48,8 @@ public class Revenue extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 102, 0));
         jLabel9.setText("REVENUE");
 
-        jTable1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        soldProductTable.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        soldProductTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -63,8 +71,8 @@ public class Revenue extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setRowHeight(25);
-        jScrollPane1.setViewportView(jTable1);
+        soldProductTable.setRowHeight(25);
+        jScrollPane1.setViewportView(soldProductTable);
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 102, 0));
@@ -262,6 +270,18 @@ public class Revenue extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_ExitButtonMouseClicked
 
+       private void showSoldProducts() {
+        try{
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
+            St = Con.createStatement();
+            Rs = St.executeQuery("SELECT * FROM soldproductstable");
+            soldProductTable.setModel(DbUtils.resultSetToTableModel(Rs));
+        } catch (SQLException e)
+        {
+            
+        }
+    }
+       
     private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
         new LoginForm().setVisible(true);//Start display LoginForm
         this.dispose();
@@ -334,7 +354,8 @@ public class Revenue extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable soldProductTable;
     // End of variables declaration//GEN-END:variables
+
 }

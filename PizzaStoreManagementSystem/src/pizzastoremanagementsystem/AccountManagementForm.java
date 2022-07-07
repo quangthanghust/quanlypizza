@@ -329,11 +329,11 @@ public class AccountManagementForm extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(ProductButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ExitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,8 +457,8 @@ public class AccountManagementForm extends javax.swing.JFrame {
     }//GEN-LAST:event_ProductButtonMouseClicked
 
     private void RevenueButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RevenueButtonMouseClicked
-        //new RevenueForm().setVisible(true);//Start display LoginForm
-        //this.dispose();
+        new Revenue().setVisible(true);//Start display LoginForm
+        this.dispose();
     }//GEN-LAST:event_RevenueButtonMouseClicked
     
     public void SelectAccount(){

@@ -37,10 +37,10 @@ public class ProductManagementForm extends javax.swing.JFrame {
         Price = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         CategoryBox = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        AddButton = new javax.swing.JButton();
+        EditButton = new javax.swing.JButton();
+        DeleteButton = new javax.swing.JButton();
+        ClearButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ProductTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -91,51 +91,51 @@ public class ProductManagementForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ADD");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        AddButton.setBackground(new java.awt.Color(255, 102, 0));
+        AddButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        AddButton.setForeground(new java.awt.Color(255, 255, 255));
+        AddButton.setText("ADD");
+        AddButton.setBorder(null);
+        AddButton.setBorderPainted(false);
+        AddButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                AddButtonMouseClicked(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 0));
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("EDIT");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        EditButton.setBackground(new java.awt.Color(255, 102, 0));
+        EditButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        EditButton.setForeground(new java.awt.Color(255, 255, 255));
+        EditButton.setText("EDIT");
+        EditButton.setBorder(null);
+        EditButton.setBorderPainted(false);
+        EditButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                EditButtonMouseClicked(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 102, 0));
-        jButton3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("DELETE");
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        DeleteButton.setBackground(new java.awt.Color(255, 102, 0));
+        DeleteButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        DeleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteButton.setText("DELETE");
+        DeleteButton.setBorder(null);
+        DeleteButton.setBorderPainted(false);
+        DeleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                DeleteButtonMouseClicked(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 102, 0));
-        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("CLEAR");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        ClearButton.setBackground(new java.awt.Color(255, 102, 0));
+        ClearButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        ClearButton.setForeground(new java.awt.Color(255, 255, 255));
+        ClearButton.setText("CLEAR");
+        ClearButton.setBorder(null);
+        ClearButton.setBorderPainted(false);
+        ClearButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                ClearButtonMouseClicked(evt);
             }
         });
 
@@ -182,13 +182,13 @@ public class ProductManagementForm extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(286, 286, 286)
@@ -218,10 +218,10 @@ public class ProductManagementForm extends javax.swing.JFrame {
                     .addComponent(jLabel13))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -317,21 +317,21 @@ public class ProductManagementForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CategoryBoxActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_AddButtonMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void EditButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_EditButtonMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void DeleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_DeleteButtonMouseClicked
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void ClearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4MouseClicked
+    }//GEN-LAST:event_ClearButtonMouseClicked
 
     private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
         // TODO add your handling code here:
@@ -382,17 +382,17 @@ public class ProductManagementForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AccountButton;
+    private javax.swing.JButton AddButton;
     private javax.swing.JComboBox<String> CategoryBox;
+    private javax.swing.JButton ClearButton;
+    private javax.swing.JButton DeleteButton;
+    private javax.swing.JButton EditButton;
     private javax.swing.JTextField ID;
     private javax.swing.JLabel LogOut;
     private javax.swing.JTextField Name;
     private javax.swing.JTextField Price;
     private javax.swing.JTable ProductTable;
     private javax.swing.JLabel RevenueButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

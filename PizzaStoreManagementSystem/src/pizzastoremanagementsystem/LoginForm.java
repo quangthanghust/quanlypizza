@@ -128,6 +128,11 @@ public class LoginForm extends javax.swing.JFrame {
         LoginButton.setText("LOGIN");
         LoginButton.setBorder(null);
         LoginButton.setBorderPainted(false);
+        LoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginButtonMouseClicked(evt);
+            }
+        });
 
         ClearButton.setBackground(new java.awt.Color(255, 102, 0));
         ClearButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -135,6 +140,11 @@ public class LoginForm extends javax.swing.JFrame {
         ClearButton.setText("CLEAR");
         ClearButton.setBorder(null);
         ClearButton.setBorderPainted(false);
+        ClearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ClearButtonMouseClicked(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Overwolf\\KeyAndLock3.1.png")); // NOI18N
 
@@ -245,6 +255,14 @@ public class LoginForm extends javax.swing.JFrame {
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
         System.exit(0);
     }//GEN-LAST:event_ExitButtonMouseClicked
+
+    private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginButtonMouseClicked
+
+    private void ClearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ClearButtonMouseClicked
 
     /**
      * @param args the command line arguments

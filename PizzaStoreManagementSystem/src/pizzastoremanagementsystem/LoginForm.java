@@ -4,6 +4,10 @@
  */
 package pizzastoremanagementsystem;
 
+import java.sql.DriverManager;
+import javax.swing.JOptionPane;
+import java.sql.*;
+
 /**
  *
  * @author Vu Duc Duy
@@ -17,6 +21,10 @@ public class LoginForm extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    Connection Con = null;
+    Statement St = null;
+    ResultSet Rs = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,11 +120,6 @@ public class LoginForm extends javax.swing.JFrame {
         RoleBox.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         RoleBox.setForeground(new java.awt.Color(255, 102, 0));
         RoleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Staff" }));
-        RoleBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RoleBoxActionPerformed(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 102, 0));
@@ -248,20 +251,52 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RoleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RoleBoxActionPerformed
-
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
         System.exit(0);
     }//GEN-LAST:event_ExitButtonMouseClicked
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
-        // TODO add your handling code here:
+        if(RoleBox.getSelectedItem().toString().equals("Admin")){
+            String Query = "select * from accounttable where NAME ='" + Name.getText()+ "' and PASSWORD='"+ Password.getText()+"' and Role ='" + "Admin" + "'";
+            try{
+        Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_mohinhphanmem","root","");
+        St = Con.createStatement();
+        Rs = St.executeQuery(Query);
+                if(Rs.next()){
+                    new AccountManagementForm().setVisible(true);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Wrong Role or Name or Password!");
+                }
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        if(RoleBox.getSelectedItem().toString().equals("Staff")){
+            String Query = "select * from accounttable where NAME ='" + Name.getText()+ "' and PASSWORD='"+ Password.getText()+"' and Role ='" + "Staff" + "'";
+            try{
+        Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_mohinhphanmem","root","");
+        St = Con.createStatement();
+        Rs = St.executeQuery(Query);
+                if(Rs.next()){
+                    new Selling().setVisible(true);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Wrong Role or Name or Password!");
+                }
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_LoginButtonMouseClicked
 
     private void ClearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearButtonMouseClicked
-        // TODO add your handling code here:
+        Name.setText("");
+        Password.setText("");
     }//GEN-LAST:event_ClearButtonMouseClicked
 //check
     /**

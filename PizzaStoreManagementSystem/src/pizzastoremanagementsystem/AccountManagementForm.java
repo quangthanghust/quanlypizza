@@ -56,6 +56,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         AccountTable = new javax.swing.JTable();
         SearchField = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        SearchButton = new javax.swing.JButton();
         ExitButton = new javax.swing.JLabel();
         LogoutButton = new javax.swing.JLabel();
         ProductButton = new javax.swing.JLabel();
@@ -166,7 +167,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ACCID", "NAME", "PASSWORD", "GENDER"
+                "ACCID", "NAME", "PASSWORD", "ROLE"
             }
         ));
         AccountTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
@@ -185,6 +186,18 @@ public class AccountManagementForm extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 102, 0));
         jLabel15.setText("SEARCH");
+
+        SearchButton.setBackground(new java.awt.Color(255, 102, 0));
+        SearchButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        SearchButton.setForeground(new java.awt.Color(255, 255, 255));
+        SearchButton.setText("SEARCH");
+        SearchButton.setBorder(null);
+        SearchButton.setBorderPainted(false);
+        SearchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SearchButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -213,29 +226,35 @@ public class AccountManagementForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(DeleteAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)
-                        .addComponent(ClearAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SearchField)
                             .addComponent(Role, 0, 180, Short.MAX_VALUE)
-                            .addComponent(AccountPassword))))
+                            .addComponent(AccountPassword)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(DeleteAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91)
+                        .addComponent(ClearAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addGap(309, 309, 309))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(366, 366, 366)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(281, 281, 281)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,11 +285,12 @@ public class AccountManagementForm extends javax.swing.JFrame {
                     .addComponent(EditAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DeleteAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ClearAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(jLabel15)
+                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,7 +368,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
                         .addComponent(ProductButton)
                         .addGap(18, 18, 18)
                         .addComponent(RevenueButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
                         .addComponent(LogoutButton)))
                 .addContainerGap())
         );
@@ -460,6 +480,19 @@ public class AccountManagementForm extends javax.swing.JFrame {
         new Revenue().setVisible(true);//Start display LoginForm
         this.dispose();
     }//GEN-LAST:event_RevenueButtonMouseClicked
+
+    private void SearchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchButtonMouseClicked
+        try{
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
+            St = Con.createStatement();
+            String key = SearchField.getText().toString();
+            Rs = St.executeQuery("Select * from accounttable where NAME like '%" + key +"%'");
+            AccountTable.setModel(DbUtils.resultSetToTableModel(Rs));
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_SearchButtonMouseClicked
     
     public void SelectAccount(){
         try{
@@ -527,6 +560,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
     private javax.swing.JLabel ProductButton;
     private javax.swing.JLabel RevenueButton;
     private javax.swing.JComboBox<String> Role;
+    private javax.swing.JButton SearchButton;
     private javax.swing.JTextField SearchField;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

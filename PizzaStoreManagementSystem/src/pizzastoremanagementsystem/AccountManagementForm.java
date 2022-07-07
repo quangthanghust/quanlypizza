@@ -45,7 +45,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         AccountName = new javax.swing.JTextField();
         AccountPassword = new javax.swing.JTextField();
-        Gender = new javax.swing.JComboBox<>();
+        Role = new javax.swing.JComboBox<>();
         AddAccount = new javax.swing.JButton();
         EditAccount = new javax.swing.JButton();
         ClearAccount = new javax.swing.JButton();
@@ -54,6 +54,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         AccountTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -84,7 +85,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel13.setText("ACCOUNTID");
+        jLabel13.setText("ROLE");
 
         AccountName.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         AccountName.setForeground(new java.awt.Color(255, 102, 0));
@@ -92,9 +93,9 @@ public class AccountManagementForm extends javax.swing.JFrame {
         AccountPassword.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         AccountPassword.setForeground(new java.awt.Color(255, 102, 0));
 
-        Gender.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        Gender.setForeground(new java.awt.Color(255, 102, 0));
-        Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Intersex" }));
+        Role.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Role.setForeground(new java.awt.Color(255, 102, 0));
+        Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Staff" }));
 
         AddAccount.setBackground(new java.awt.Color(255, 102, 0));
         AddAccount.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -211,12 +212,13 @@ public class AccountManagementForm extends javax.swing.JFrame {
                         .addGap(91, 91, 91)
                         .addComponent(ClearAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel12))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Gender, 0, 180, Short.MAX_VALUE)
+                            .addComponent(Role, 0, 180, Short.MAX_VALUE)
                             .addComponent(AccountPassword))))
                 .addGap(34, 34, 34))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -245,8 +247,8 @@ public class AccountManagementForm extends javax.swing.JFrame {
                             .addComponent(jLabel12))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(Gender, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Role, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,24 +266,35 @@ public class AccountManagementForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("X");
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 3, 22)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Log out");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -311,7 +324,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
             add.setInt(1, Integer.valueOf(AccountId.getText()));
             add.setString(2, AccountName.getText());
             add.setString(3, AccountPassword.getText());
-            add.setString(4, Gender.getSelectedItem().toString());
+            add.setString(4, Role.getSelectedItem().toString());
             int row = add.executeUpdate();
             JOptionPane.showMessageDialog(this, "Account Added Successfully!");
             Con.close();
@@ -329,7 +342,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         AccountId.setText(model.getValueAt(Myindex, 0).toString());
         AccountName.setText(model.getValueAt(Myindex, 1).toString());
         AccountPassword.setText(model.getValueAt(Myindex, 2).toString());
-        Gender.setSelectedItem(model.getValueAt(Myindex, 3).toString());
+        Role.setSelectedItem(model.getValueAt(Myindex, 3).toString());
     }//GEN-LAST:event_AccountTableMouseClicked
 
     private void ClearAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearAccountMouseClicked
@@ -363,7 +376,7 @@ public class AccountManagementForm extends javax.swing.JFrame {
         else{
             try{
         Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
-        String Query = "Update accounttable set NAME ='"+ AccountName.getText()+"',"+ "PASSWORD ='"+ AccountPassword.getText()+"',"+ "Gender='"+ Gender.getSelectedItem().toString()+"'"+ "Where ACCID=" +AccountId.getText();
+        String Query = "Update accounttable set NAME ='"+ AccountName.getText()+"',"+ "PASSWORD ='"+ AccountPassword.getText()+"',"+ "Gender='"+ Role.getSelectedItem().toString()+"'"+ "Where ACCID=" +AccountId.getText();
         Statement Add = Con.createStatement();
         Add.executeUpdate(Query);
         SelectAccount();
@@ -428,13 +441,14 @@ public class AccountManagementForm extends javax.swing.JFrame {
     private javax.swing.JButton ClearAccount;
     private javax.swing.JButton DeleteAccount;
     private javax.swing.JButton EditAccount;
-    private javax.swing.JComboBox<String> Gender;
+    private javax.swing.JComboBox<String> Role;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

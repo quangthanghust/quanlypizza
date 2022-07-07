@@ -263,7 +263,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void ClearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_ClearButtonMouseClicked
-
+//check
     /**
      * @param args the command line arguments
      */

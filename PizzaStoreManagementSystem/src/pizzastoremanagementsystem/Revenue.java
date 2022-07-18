@@ -2,6 +2,7 @@ package pizzastoremanagementsystem;
 
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
+import javax.swing.table.DefaultTableModel;
 
 public class Revenue extends javax.swing.JFrame {
 
@@ -13,7 +14,7 @@ public class Revenue extends javax.swing.JFrame {
     Connection Con = null;
     Statement St = null;
     ResultSet Rs = null;
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,10 +27,11 @@ public class Revenue extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         mostSoldButton = new javax.swing.JButton();
         leastSoldButton = new javax.swing.JButton();
-        clearButton = new javax.swing.JButton();
+        newButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        showRevenueTextField = new javax.swing.JTextField();
+        RevenueTextField = new javax.swing.JTextField();
         revenueCalculateButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         ProductButton = new javax.swing.JLabel();
         AccountButton = new javax.swing.JLabel();
         ExitButton = new javax.swing.JLabel();
@@ -88,11 +90,6 @@ public class Revenue extends javax.swing.JFrame {
                 mostSoldButtonMouseClicked(evt);
             }
         });
-        mostSoldButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostSoldButtonActionPerformed(evt);
-            }
-        });
 
         leastSoldButton.setBackground(new java.awt.Color(255, 102, 0));
         leastSoldButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -104,25 +101,15 @@ public class Revenue extends javax.swing.JFrame {
                 leastSoldButtonMouseClicked(evt);
             }
         });
-        leastSoldButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                leastSoldButtonActionPerformed(evt);
-            }
-        });
 
-        clearButton.setBackground(new java.awt.Color(255, 102, 0));
-        clearButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        clearButton.setForeground(new java.awt.Color(255, 255, 255));
-        clearButton.setText("CLEAR");
-        clearButton.setBorder(null);
-        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        newButton.setBackground(new java.awt.Color(255, 102, 0));
+        newButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        newButton.setForeground(new java.awt.Color(255, 255, 255));
+        newButton.setText("NEW");
+        newButton.setBorder(null);
+        newButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                clearButtonMouseClicked(evt);
-            }
-        });
-        clearButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearButtonActionPerformed(evt);
+                newButtonMouseClicked(evt);
             }
         });
 
@@ -130,11 +117,11 @@ public class Revenue extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 102, 0));
         jLabel11.setText("The revenue of this month is:");
 
-        showRevenueTextField.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        showRevenueTextField.setForeground(new java.awt.Color(51, 255, 51));
-        showRevenueTextField.addActionListener(new java.awt.event.ActionListener() {
+        RevenueTextField.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        RevenueTextField.setForeground(new java.awt.Color(0, 153, 51));
+        RevenueTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showRevenueTextFieldActionPerformed(evt);
+                RevenueTextFieldActionPerformed(evt);
             }
         });
 
@@ -148,9 +135,15 @@ public class Revenue extends javax.swing.JFrame {
                 revenueCalculateButtonMouseClicked(evt);
             }
         });
-        revenueCalculateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                revenueCalculateButtonActionPerformed(evt);
+
+        backButton.setBackground(new java.awt.Color(255, 102, 0));
+        backButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("BACK");
+        backButton.setBorder(null);
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
             }
         });
 
@@ -160,7 +153,7 @@ public class Revenue extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(341, 341, 341))
@@ -171,19 +164,21 @@ public class Revenue extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92)
                         .addComponent(mostSoldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(93, 93, 93)
-                        .addComponent(leastSoldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152))))
+                        .addGap(109, 109, 109)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(leastSoldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(335, 335, 335))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(109, 109, 109)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
-                .addComponent(showRevenueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RevenueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(revenueCalculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(revenueCalculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -195,26 +190,38 @@ public class Revenue extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mostSoldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(leastSoldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mostSoldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(showRevenueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RevenueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(revenueCalculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         ProductButton.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
         ProductButton.setForeground(new java.awt.Color(255, 255, 255));
         ProductButton.setText("Product");
+        ProductButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProductButtonMouseClicked(evt);
+            }
+        });
 
         AccountButton.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
         AccountButton.setForeground(new java.awt.Color(255, 255, 255));
         AccountButton.setText("Account");
+        AccountButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AccountButtonMouseClicked(evt);
+            }
+        });
 
         ExitButton.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         ExitButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -291,59 +298,94 @@ public class Revenue extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitButtonMouseClicked
 
     //Show sold products on table
-       private void showSoldProducts() {
-        try{
-            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
+    private void showSoldProducts() {
+        try {
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem", "root", "");
             St = Con.createStatement();
-            Rs = St.executeQuery("SELECT * FROM soldproductstable");
+            Rs = St.executeQuery("SELECT ProdId, ProdName, ProdPrice, SoldAmount, ProdPrice*SoldAmount as Total FROM product");
             soldProductTable.setModel(DbUtils.resultSetToTableModel(Rs));
-        } catch (SQLException e)
-        {
-            
+        } catch (SQLException e) {
+
         }
     }
-       
+
     //Log out event
     private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
         new LoginForm().setVisible(true);//Start display LoginForm
         this.dispose();
     }//GEN-LAST:event_LogoutButtonMouseClicked
 
-    private void mostSoldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostSoldButtonActionPerformed
+    private void RevenueTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RevenueTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mostSoldButtonActionPerformed
+    }//GEN-LAST:event_RevenueTextFieldActionPerformed
 
-    private void leastSoldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leastSoldButtonActionPerformed
+    private void newButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_leastSoldButtonActionPerformed
+        try {
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem", "root", "");
+            St = Con.createStatement();
+            St.executeUpdate("UPDATE product SET SoldAmount = 0, Total = 0 WHERE 1");
+            showSoldProducts();
+        } catch (SQLException e) {
 
-    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_clearButtonActionPerformed
-
-    private void showRevenueTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRevenueTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showRevenueTextFieldActionPerformed
-
-    private void revenueCalculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revenueCalculateButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_revenueCalculateButtonActionPerformed
-
-    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_clearButtonMouseClicked
+        }
+    }//GEN-LAST:event_newButtonMouseClicked
 
     private void mostSoldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostSoldButtonMouseClicked
         // TODO add your handling code here:
+        try {
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem", "root", "");
+            St = Con.createStatement();
+            Rs = St.executeQuery("SELECT * FROM `product` WHERE SoldAmount = (SELECT MAX(SoldAmount) FROM product)");
+            soldProductTable.setModel(DbUtils.resultSetToTableModel(Rs));
+        } catch (SQLException e) {
+
+        }
     }//GEN-LAST:event_mostSoldButtonMouseClicked
 
     private void leastSoldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leastSoldButtonMouseClicked
         // TODO add your handling code here:
+        try {
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem", "root", "");
+            St = Con.createStatement();
+            Rs = St.executeQuery("SELECT * FROM `product` WHERE SOLDAMOUNT = (SELECT MIN(SOLDAMOUNT) FROM product)");
+            soldProductTable.setModel(DbUtils.resultSetToTableModel(Rs));
+        } catch (SQLException e) {
+
+        }
     }//GEN-LAST:event_leastSoldButtonMouseClicked
 
     private void revenueCalculateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_revenueCalculateButtonMouseClicked
-        // TODO add your handling code here:
+        try {
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem", "root", "");
+            St = Con.createStatement();
+            Rs = St.executeQuery("SELECT SUM(ProdPrice*SoldAmount) as revenue FROM `product` WHERE 1");
+
+            while (Rs.next()) {
+                String a = Rs.getString(1);
+                System.out.println(a);
+                RevenueTextField.setText(a);
+            }
+
+        } catch (SQLException e) {
+
+        }
     }//GEN-LAST:event_revenueCalculateButtonMouseClicked
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        // TODO add your handling code here:
+        showSoldProducts();
+    }//GEN-LAST:event_backButtonMouseClicked
+
+    private void ProductButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductButtonMouseClicked
+        new ProductManagementForm().setVisible(true);//Start display LoginForm
+        this.dispose();
+    }//GEN-LAST:event_ProductButtonMouseClicked
+
+    private void AccountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountButtonMouseClicked
+        new AccountManagementForm().setVisible(true);//Start display LoginForm
+        this.dispose();
+    }//GEN-LAST:event_AccountButtonMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -382,7 +424,8 @@ public class Revenue extends javax.swing.JFrame {
     private javax.swing.JLabel ExitButton;
     private javax.swing.JLabel LogoutButton;
     private javax.swing.JLabel ProductButton;
-    private javax.swing.JButton clearButton;
+    private javax.swing.JTextField RevenueTextField;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel9;
@@ -391,8 +434,8 @@ public class Revenue extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton leastSoldButton;
     private javax.swing.JButton mostSoldButton;
+    private javax.swing.JButton newButton;
     private javax.swing.JButton revenueCalculateButton;
-    private javax.swing.JTextField showRevenueTextField;
     private javax.swing.JTable soldProductTable;
     // End of variables declaration//GEN-END:variables
 

@@ -17,7 +17,7 @@ public class Selling extends javax.swing.JFrame {
     public Selling() {
         initComponents();
         SelectSeller();
-        GetCat();
+        //GetCat();
     }
 
 Connection Con = null;
@@ -47,8 +47,8 @@ ResultSet Rs = null;
         Grdtotallbl = new javax.swing.JLabel();
         Filterbtn = new javax.swing.JButton();
         CleanBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        ExitButton = new javax.swing.JLabel();
+        LogoutButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -63,21 +63,9 @@ ResultSet Rs = null;
         jLabel2.setForeground(new java.awt.Color(255, 102, 0));
         jLabel2.setText("BILLING POINT");
 
-        ProdName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProdNameActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 0));
         jLabel4.setText("Name");
-
-        ProdQty.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProdQtyActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 102, 0));
@@ -85,14 +73,14 @@ ResultSet Rs = null;
 
         ProductTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "PRODID", "PRODNAME", "PRODCAT", "PRODPRICE"
+                "PRODID", "PRODNAME", "PRODPRICE", "PRODCAT", "SOLDAMOUNT"
             }
         ));
         ProductTable.setRowHeight(25);
@@ -113,11 +101,6 @@ ResultSet Rs = null;
                 DeletebtnMouseClicked(evt);
             }
         });
-        Deletebtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeletebtnActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 102, 0));
@@ -133,11 +116,6 @@ ResultSet Rs = null;
                 AddBtnMouseClicked(evt);
             }
         });
-        AddBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddBtnActionPerformed(evt);
-            }
-        });
 
         ClearBtn.setBackground(new java.awt.Color(255, 102, 0));
         ClearBtn.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -149,33 +127,13 @@ ResultSet Rs = null;
                 ClearBtnMouseClicked(evt);
             }
         });
-        ClearBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClearBtnActionPerformed(evt);
-            }
-        });
 
         BillTxt.setColumns(20);
         BillTxt.setRows(5);
         jScrollPane2.setViewportView(BillTxt);
 
         Catcb.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        Catcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pizza", "Slides", "Drinks" }));
-        Catcb.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CatcbItemStateChanged(evt);
-            }
-        });
-        Catcb.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CatcbMouseClicked(evt);
-            }
-        });
-        Catcb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CatcbActionPerformed(evt);
-            }
-        });
+        Catcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pizza", "Sides", "Drinks" }));
 
         UpdateBtn.setBackground(new java.awt.Color(255, 102, 0));
         UpdateBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -185,11 +143,6 @@ ResultSet Rs = null;
         UpdateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 UpdateBtnMouseClicked(evt);
-            }
-        });
-        UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateBtnActionPerformed(evt);
             }
         });
 
@@ -207,11 +160,6 @@ ResultSet Rs = null;
                 FilterbtnMouseClicked(evt);
             }
         });
-        Filterbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FilterbtnActionPerformed(evt);
-            }
-        });
 
         CleanBtn.setBackground(new java.awt.Color(255, 102, 0));
         CleanBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -223,18 +171,13 @@ ResultSet Rs = null;
                 CleanBtnMouseClicked(evt);
             }
         });
-        CleanBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CleanBtnActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -251,19 +194,20 @@ ResultSet Rs = null;
                                 .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(50, 50, 50)
                                 .addComponent(ClearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(CleanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Catcb, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Filterbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Deletebtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+                        .addComponent(CleanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(Catcb, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Filterbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Deletebtn)
+                                .addGap(13, 13, 13)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(288, 288, 288)
@@ -298,10 +242,7 @@ ResultSet Rs = null;
                     .addComponent(Deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ProdName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,31 +254,36 @@ ResultSet Rs = null;
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ClearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(100, 100, 100)
+                            .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Grdtotallbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
                         .addComponent(CleanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Grdtotallbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("X");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        ExitButton.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        ExitButton.setForeground(new java.awt.Color(255, 255, 255));
+        ExitButton.setText("X");
+        ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                ExitButtonMouseClicked(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 2, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("LOG OUT");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        LogoutButton.setFont(new java.awt.Font("Century Gothic", 2, 18)); // NOI18N
+        LogoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        LogoutButton.setText("LOG OUT");
+        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                LogoutButtonMouseClicked(evt);
             }
         });
 
@@ -348,9 +294,9 @@ ResultSet Rs = null;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(LogoutButton)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -361,9 +307,9 @@ ResultSet Rs = null;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
+                        .addComponent(LogoutButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(ExitButton)
                         .addGap(12, 12, 12)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -383,54 +329,47 @@ ResultSet Rs = null;
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-public void SelectSeller()
+
+    int array[][] = new int[2][30], count = 0;
+    
+    public void SelectSeller()
         
 {
     try{
-        //Con = DriveManager.getConnection()   // doi lam xong database
+        Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
         St = Con.createStatement();
-        //Rs = St.executeQuery();   
+        Rs = St.executeQuery("Select `ProdId`, `ProdName`, `ProdPrice`, `ProdCat`, SoldAmount from product");   
         ProductTable.setModel(DbUtils.resultSetToTableModel(Rs));
     }catch(Exception e)
     {
         e.printStackTrace();
     }
 }
-int Prid; 
+int Prid, newQty; 
 public void update()
 {
-    /*try{
-        Con = DriverManager.getConnection() //doi xong database
-        String Query = 
-        Statement Add = Con.createStatement();
-        Add.executeUpdate(Query);
-       // JOptionPane.showMessageDialog(this, "Product Updated");
-        SellectSeller();
-                
-                
+    try{
+        for (int j = 0; j < count; j++) {
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
+            String Query = "Update product set SoldAmount ='"+ array[1][j] + "'Where ProdId='" + array[0][j] + "'";
+            Statement Add = Con.createStatement();
+            Add.executeUpdate(Query);
+            SelectSeller();
+        }
+        JOptionPane.showMessageDialog(this, "Product Updated");
+                            
     }catch(SQLException e)
     {
         e.printStackTrace();
-    }*/
+    }
 }
-    private void ProdNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ProdNameActionPerformed
-
-    private void ProdQtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdQtyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ProdQtyActionPerformed
-
-    private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DeletebtnActionPerformed
-private void GetCat()
+/*private void GetCat()
 {
-    /*try{
-        //Con = DriverManager.getConnection()   // doi database
+    try{
+        Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
         St = Con.createStatement();
-        String Query = 
-        //Rs = St.executeQuery(query);
+        String Query = ""
+        Rs = St.executeQuery(query);
         while(Rs.next())
         {
             String Mycat = Rs.getString("CATNAME");
@@ -439,22 +378,25 @@ private void GetCat()
     }catch(Exception e)
     {
         e.printStackTrace();
-    }*/
-}
-Double Uprice, ProdTot = 0.0, GrdTotal = 0.0;
-//int AvailQty;
+    }
+}*/
+
+int Uprice, ProdTot = 0, GrdTotal = 0;
+int SoldAmountQty;
     private void ProductTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductTableMouseClicked
         DefaultTableModel model = (DefaultTableModel)ProductTable.getModel();
         int Myindex = ProductTable.getSelectedRow();
         Prid = Integer.valueOf(model.getValueAt(Myindex, 0).toString());
-        //AvailQty = Integer.valueOf(model.getValueAt(Myindex, 2).toString());
+        array[0][count] = Prid;
         ProdName.setText(model.getValueAt(Myindex, 1).toString());
-        Uprice = Double.valueOf(model.getValueAt(Myindex, 3).toString());
+        Uprice = Integer.valueOf(model.getValueAt(Myindex, 2).toString());
+        SoldAmountQty = Integer.valueOf(model.getValueAt(Myindex, 4).toString());
         
-       // ProdQty.setText(model.getValueAt(Myindex, 2).toString());
-       // ProdPrice.setText(model.getValueAt(Myindex, 3).toString());
+        //ProdQty.setText(model.getValueAt(Myindex, 2).toString());
+        //Pro.setText(model.getValueAt(Myindex, 3).toString());
     }//GEN-LAST:event_ProductTableMouseClicked
-int i = 0;
+
+    int i = 0;
     private void AddBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtnMouseClicked
 if (ProdQty.getText().isEmpty() || ProdName.getText().isEmpty())
 {
@@ -463,31 +405,28 @@ if (ProdQty.getText().isEmpty() || ProdName.getText().isEmpty())
 else{
     i++;
     ProdTot = Uprice * Integer.valueOf(ProdQty.getText());
+    array[1][count] = SoldAmountQty + Integer.valueOf(ProdQty.getText());
     GrdTotal = GrdTotal + ProdTot; 
     if(i == 1)
     {
-        BillTxt.setText(BillTxt.getText()+"NUM      PRODUCT      PRICE      QUANTITY      TOTAL\n"+i+"          "+ProdName.getText()+"        "+Uprice+"           "+ProdQty.getText()+"            "+ProdTot+"\n");
+        BillTxt.setText(BillTxt.getText()+"NUM\tPRODUCT\tPRICE\tQUANTITY\tTOTAL\n"+i+"\t"+ProdName.getText()+"\t"+Uprice+"\t"+ProdQty.getText()+"\t"+ProdTot+"\n");
     }
     else{
-        BillTxt.setText(BillTxt.getText()+i+"          "+ProdName.getText()+"        "+Uprice+"           "+ProdQty.getText()+"            "+ProdTot+"\n");
+        BillTxt.setText(BillTxt.getText()+i+"\t"+ProdName.getText()+"\t"+Uprice+"\t"+ProdQty.getText()+"\t"+ProdTot+"\n");
     }
     Grdtotallbl.setText("Total "+GrdTotal);
-    update();
+    count++;
 }
     }//GEN-LAST:event_AddBtnMouseClicked
 
     private void ClearBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearBtnMouseClicked
           ProdName.setText("");
           ProdQty.setText("");
-
     }//GEN-LAST:event_ClearBtnMouseClicked
-
-    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UpdateBtnActionPerformed
 
     private void UpdateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateBtnMouseClicked
         try{
+            update();
             BillTxt.print();
         }catch(Exception e)
         {
@@ -495,65 +434,37 @@ else{
         }
     }//GEN-LAST:event_UpdateBtnMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
         // TODO add your handling code here:
         new LoginForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_LogoutButtonMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void CatcbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CatcbMouseClicked
-        // TODO add your handling code here:        
-        
-    }//GEN-LAST:event_CatcbMouseClicked
+    }//GEN-LAST:event_ExitButtonMouseClicked
 
     private void DeletebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeletebtnMouseClicked
-        
         SelectSeller();
     }//GEN-LAST:event_DeletebtnMouseClicked
 
-    private void CatcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CatcbItemStateChanged
-        
-    }//GEN-LAST:event_CatcbItemStateChanged
-
     private void FilterbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FilterbtnMouseClicked
         try{
-        //Con = DriveManager.getConnection()   // doi lam xong database
-        St = Con.createStatement();
-        //Rs = St.executeQuery();   
-        ProductTable.setModel(DbUtils.resultSetToTableModel(Rs));
-    }catch(Exception e)
-    {
-        e.printStackTrace();
-    }
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project_MoHinhPhanMem","root","");
+            St = Con.createStatement();
+            Rs = St.executeQuery("SELECT `ProdId`, `ProdName`, `ProdPrice`, `ProdCat`, `SoldAmount` FROM `product` WHERE ProdCat ='" + Catcb.getSelectedItem().toString()+"'");   
+            ProductTable.setModel(DbUtils.resultSetToTableModel(Rs));
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_FilterbtnMouseClicked
-
-    private void FilterbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FilterbtnActionPerformed
 
     private void CleanBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CleanBtnMouseClicked
         BillTxt.setText("");
+        i = 0;
+        GrdTotal = 0;
     }//GEN-LAST:event_CleanBtnMouseClicked
-
-    private void CleanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CleanBtnActionPerformed
-
-    private void CatcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CatcbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CatcbActionPerformed
-
-    private void ClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ClearBtnActionPerformed
-
-    private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -604,15 +515,15 @@ else{
     private javax.swing.JButton CleanBtn;
     private javax.swing.JButton ClearBtn;
     private javax.swing.JButton Deletebtn;
+    private javax.swing.JLabel ExitButton;
     private javax.swing.JButton Filterbtn;
     private javax.swing.JLabel Grdtotallbl;
+    private javax.swing.JLabel LogoutButton;
     private javax.swing.JTextField ProdName;
     private javax.swing.JTextField ProdQty;
     private javax.swing.JTable ProductTable;
     private javax.swing.JButton UpdateBtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
